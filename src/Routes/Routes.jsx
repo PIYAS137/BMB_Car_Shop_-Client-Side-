@@ -10,6 +10,7 @@ import UpdateProductPage from '../Pages/UpdateProductPage/UpdateProductPage'
 import RegisterPage from '../Pages/RegisterPage/RegisterPage'
 import DynamicCompany from '../Pages/DynamicCompanyPage/DynamicCompany'
 import DynamicOneCarPage from '../Pages/DynamicOneCarPage/DynamicOneCarPage'
+import AllCompanyLogo from '../Pages/AllCompanyLogo/AllCompanyLogo'
 
 const router = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path:'/oneCarDet',
                 element:<DynamicOneCarPage/>
+            }
+            ,{
+                path:'/discover',
+                element:<AllCompanyLogo/>
             }
         ]
     }

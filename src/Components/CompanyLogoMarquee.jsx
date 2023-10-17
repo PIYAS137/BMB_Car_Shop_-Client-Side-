@@ -16,7 +16,9 @@ import Marquee from "react-fast-marquee";
 
 const CompanyLogoMarquee = () => {
     return (
-        <Marquee className="py-20 dark:bg-black dark:text-white">
+        <div className="max-w-7xl mx-auto py-20">
+            <h1 className="text-center text-5xl font-bold">Our Business Partners</h1>
+            <Marquee className="py-20 dark:bg-black dark:text-white">
             <div className="flex ml-20 flex-col items-center justify-center">
                 <img width='130' src="https://i.ibb.co/Yj8h4b3/kindpng-124731.png" alt="" />
                 <h1 className="text-xl font-bold mt-2">Ford</h1>
@@ -70,6 +72,7 @@ const CompanyLogoMarquee = () => {
                 <h1 className="text-xl font-bold mt-2">Mercedes</h1>
             </div>
         </Marquee>
+        </div>
     )
 }
 
