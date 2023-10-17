@@ -1,3 +1,14 @@
+.bgx{
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+}
+.bgp{
+    background: #000000af;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
