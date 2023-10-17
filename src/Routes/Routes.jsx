@@ -8,6 +8,8 @@ import CartPage from '../Pages/CartPage/CartPage'
 import AddProductPage from '../Pages/AddProductPage/AddProductPage'
 import UpdateProductPage from '../Pages/UpdateProductPage/UpdateProductPage'
 import RegisterPage from '../Pages/RegisterPage/RegisterPage'
+import DynamicCompany from '../Pages/DynamicCompanyPage/DynamicCompany'
+import DynamicOneCarPage from '../Pages/DynamicOneCarPage/DynamicOneCarPage'
 
 const router = createBrowserRouter([
     {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
             {
                 path:'/updateproduct',
                 element:<UpdateProductPage/>
+            },
+            {
+                path:'/dynamiccompany',
+                element:<DynamicCompany/>
+            },
+            {
+                path:'/oneCarDet',
+                element:<DynamicOneCarPage/>
             }
         ]
     }

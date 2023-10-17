@@ -6,6 +6,9 @@
 .bgp{
     background: #000000af;
 }
+.bgc{
+    background: #00000098;
+}
 
 @tailwind base;
 @tailwind components;
