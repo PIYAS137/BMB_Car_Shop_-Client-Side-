@@ -39,7 +39,8 @@ const AppNavBar = () => {
 
 
     return (
-        <nav className="navbar bg-text-white bg-slate-300 dark:bg-black dark:text-white">
+        <div className="dark:bg-black dark:text-white">
+            <nav className="navbar bg-text-white dark:bg-black max-w-7xl mx-auto dark:text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,6 +95,7 @@ const AppNavBar = () => {
                 <Link to='/login'><button className="btn ml-3 bg-red-500 border-none text-white font-semibold">LogIn</button></Link>
             </div>
         </nav>
+        </div>
     )
 }
 
