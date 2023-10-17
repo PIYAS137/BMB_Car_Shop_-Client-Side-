@@ -4,7 +4,7 @@ import AppNavBar from "../../Layout/AppNavBar"
 
 const RootPage = () => {
     return (
-        <div className=" ">
+        <div className="dark:bg-black dark:text-white ">
             <AppNavBar />
             <Outlet />
         </div>

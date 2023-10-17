@@ -9,11 +9,14 @@ import Marquee from "react-fast-marquee";
 // 
 // 
 // 
+// 
+// 
+
 
 
 const CompanyLogoMarquee = () => {
     return (
-        <Marquee className="py-10 dark:bg-black dark:text-white">
+        <Marquee className="py-20 dark:bg-black dark:text-white">
             <div className="flex ml-20 flex-col items-center justify-center">
                 <img width='130' src="https://i.ibb.co/Yj8h4b3/kindpng-124731.png" alt="" />
                 <h1 className="text-xl font-bold mt-2">Ford</h1>
@@ -45,6 +48,26 @@ const CompanyLogoMarquee = () => {
             <div className="flex ml-20 flex-col items-center justify-center">
                 <img width='80' src="https://i.ibb.co/2hSd7sK/kindpng-696738-1.png" alt="" />
                 <h1 className="text-xl font-bold mt-2">Royal Enfield</h1>
+            </div>
+            <div className="flex ml-20 flex-col items-center justify-center">
+                <img width='130' src="https://i.ibb.co/mFBvp1f/image.png" alt="" />
+                <h1 className="text-xl font-bold mt-2">Jaguar</h1>
+            </div>
+            <div className="flex ml-20 flex-col items-center justify-center">
+                <img width='130' src="https://i.ibb.co/16tF1gs/kindpng-1896539.png" alt="" />
+                <h1 className="text-xl font-bold mt-2">Bugatti</h1>
+            </div>
+            <div className="flex ml-20 flex-col items-center justify-center">
+                <img width='130' src="https://i.ibb.co/Btm6hsD/580b57fcd9996e24bc43c488.png" alt="" />
+                <h1 className="text-xl font-bold mt-2">Jeep</h1>
+            </div>
+            <div className="flex ml-20 flex-col items-center justify-center">
+                <img width='130' src="https://i.ibb.co/VSj0xPP/5ec3e41958550c0004427749.png" alt="" />
+                <h1 className="text-xl font-bold mt-2">Chevrolt</h1>
+            </div>
+            <div className="flex ml-20 flex-col items-center justify-center">
+                <img width='110' src="https://i.ibb.co/SQv9gVd/5ec3e30358550c0004427741.png" alt="" />
+                <h1 className="text-xl font-bold mt-2">Mercedes</h1>
             </div>
         </Marquee>
     )

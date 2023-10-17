@@ -6,6 +6,8 @@ import HomePage from '../Pages/HomePage/HomePage'
 import LogInPage from '../Pages/LogInPage/LogInPage'
 import CartPage from '../Pages/CartPage/CartPage'
 import AddProductPage from '../Pages/AddProductPage/AddProductPage'
+import UpdateProductPage from '../Pages/UpdateProductPage/UpdateProductPage'
+import RegisterPage from '../Pages/RegisterPage/RegisterPage'
 
 const router = createBrowserRouter([
     {
@@ -21,12 +23,20 @@ const router = createBrowserRouter([
                 element:<LogInPage/>
             },
             {
+                path:'/register',
+                element:<RegisterPage/>
+            },
+            {
                 path:'/cart',
                 element:<CartPage/>
             },
             {
                 path:'/addproduct',
                 element:<AddProductPage/>
+            },
+            {
+                path:'/updateproduct',
+                element:<UpdateProductPage/>
             }
         ]
     }
