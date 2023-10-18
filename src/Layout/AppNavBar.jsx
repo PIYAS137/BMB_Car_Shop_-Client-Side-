@@ -1,16 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom"
 import { FirebaseAuthContext } from "../Context/FirebaseContext";
-
+import { FaShoppingCart } from "react-icons/fa";
 
 const AppNavBar = () => {
-const {user,SignOutUser}=useContext(FirebaseAuthContext)
+const {user,SignOutUser,}=useContext(FirebaseAuthContext)
 
 const handleClickLogOut=()=>{
     SignOutUser()
     .then(res=>console.log(res))
     .catch(err=>console.log(err))
 }
+
 
 
 // ----------------------------------------------------------------------
@@ -43,7 +44,7 @@ const handleClickLogOut=()=>{
         <li className="text-sm font-semibol"><NavLink to='/'>Home</NavLink></li>
         <li className="text-sm font-semibol"><NavLink to='/discover'>Products</NavLink></li>
         <li className="text-sm font-semibol"><NavLink to='/addproduct'>Add Product</NavLink></li>
-        <li className="text-sm font-semibol relative"><NavLink to='/cart'>Cart <sup className=" -top-0 right-0 rounded-full flex justify-center items-center text-white bg-red-500 w-4 h-4 absolute">9</sup></NavLink></li>
+        <li className="text-sm font-semibol relative"><NavLink to='/cart'>Cart <sup className=" -top-1 right-0 rounded-full flex justify-center items-center text-white bg-red-500 w-5 h-5 absolute"><FaShoppingCart/></sup></NavLink></li>
     </>
 
 
