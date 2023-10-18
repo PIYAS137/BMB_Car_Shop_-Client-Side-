@@ -6,15 +6,22 @@ const Server = () => {
     const [brand,setBrand]=useState('');
     const [logo,setLogo]=useState('');
     const [width,setWidth]=useState('');
+    const [image1,setImage1]=useState('');
+    const [image2,setImage2]=useState('');
+    const [image3,setImage3]=useState('');
+    const [disco,setDisco]=useState('');
+  
 
 
     const handleSubmit=(event)=>{
         event.preventDefault()
         const newProduct = {
-            since,brand,logo,width
+            since,brand,logo,width,discount:disco,
+            images:[image1,image2,image3]
         }
+        console.log(newProduct);
         fetch('http://localhost:5020/category',{
-          method:"POST",
+          method:"PATCH",
           headers:{
             'content-type':'application/json'
           },
@@ -33,7 +40,12 @@ const Server = () => {
             <input onChange={e=>setSince(e.target.value)} value={since} type="text" placeholder="Enter your since" />
             <input onChange={e=>setLogo(e.target.value)} value={logo} type="text" placeholder="Enter logo url" />
             <input onChange={e=>setWidth(e.target.value)} value={width} type="text" placeholder="Enter width" />
+            <input onChange={e=>setImage1(e.target.value)} value={image1} type="text" placeholder="Enter 1st image" />
+            <input onChange={e=>setImage2(e.target.value)} value={image2} type="text" placeholder="Enter 2nd image" />
+            <input onChange={e=>setImage3(e.target.value)} value={image3} type="text" placeholder="Enter 3rd image" />
+            <input onChange={e=>setDisco(e.target.value)} value={disco} type="text" placeholder="Enter Discount" />
             <select onChange={e=>setBrand(e.target.value)} value={brand} name="" id="">
+                <option value="">select brand</option>
                 <option value="Ford">Ford</option>
                 <option value="Toyota">Toyota</option>
                 <option value="Rolls Royce">Rolls Royce</option>

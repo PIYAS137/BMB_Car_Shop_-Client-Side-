@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 
 const UpdateProductPage = () => {
 
   const loadedData = useLoaderData();
-  console.log(loadedData);
-
-  // const {modelName,img,price,rating,description:des,milage,fuelType,company,fuelTankCapacity,seatingCapacity,release,speed,cylinder,torque,hp} = loadedData;
 
   const [modelName, setModelName] = useState(loadedData.modelName)
   const [img, setImg] = useState(loadedData.img)
@@ -19,85 +16,97 @@ const UpdateProductPage = () => {
   const [company, setCompany] = useState(loadedData.company);
   const [fuelTankCapacity, setFuelTankCapacity] = useState(loadedData.fuelTankCapacity);
   const [seatingCapacity, setSeatingCapacity] = useState(loadedData.seatingCapacity)
-  const [release,setRelease]=useState(loadedData.release);
-  const [speed,setSpeed]=useState(loadedData.speed)
-  const [cylinder,setCylinder]=useState(loadedData.cylinder)
-  const [torque,setTorque]=useState(loadedData.torque)
-  const [hp,setHp]=useState(loadedData.hp)
+  const [release, setRelease] = useState(loadedData.release);
+  const [speed, setSpeed] = useState(loadedData.speed)
+  const [cylinder, setCylinder] = useState(loadedData.cylinder)
+  const [torque, setTorque] = useState(loadedData.torque)
+  const [hp, setHp] = useState(loadedData.hp)
 
 
-  const handleSubmitProduct=(event)=>{
+  const handleSubmitProduct = (event) => {
     event.preventDefault();
 
-    const newProduct = {modelName,img,price,rating,description:des,milage,fuelType,company,fuelTankCapacity,seatingCapacity,release}
+    const newProduct = { modelName, img, price, rating, description: des, milage, fuelType, company, fuelTankCapacity, seatingCapacity, release }
     console.log(newProduct);
 
-    fetch(`http://localhost:5020/${loadedData._id}`,{
-      method:"PUT",
-      headers:{
-        'content-type':'application/json'
-      },body:JSON.stringify(newProduct)
+    fetch(`http://localhost:5020/${loadedData._id}`, {
+      method: "PUT",
+      headers: {
+        'content-type': 'application/json'
+      }, body: JSON.stringify(newProduct)
     })
-    .then(res=>res.json())
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err))
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        if (res.modifiedCount) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Successfully Updated Product',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+
+      })
+      .catch(err => console.log(err))
 
 
 
   }
 
-  const fuelTypes=[
+  const fuelTypes = [
     {
-      id:1,
-      fuel_type:"Diesel"
+      id: 1,
+      fuel_type: "Diesel"
     },
     {
-      id:2,
-      fuel_type:"Petrol"
+      id: 2,
+      fuel_type: "Petrol"
     },
     {
-      id:3,
-      fuel_type:"Ethanol"
+      id: 3,
+      fuel_type: "Ethanol"
     },
     {
-      id:4,
-      fuel_type:"Biodiesel"
+      id: 4,
+      fuel_type: "Biodiesel"
     },
     {
-      id:5,
-      fuel_type:"Natural Gas"
+      id: 5,
+      fuel_type: "Natural Gas"
     },
     {
-      id:6,
-      fuel_type:"Liquefied Petroleum Gas"
+      id: 6,
+      fuel_type: "Liquefied Petroleum Gas"
     },
     {
-      id:7,
-      fuel_type:"Compressed Natural Gas"
+      id: 7,
+      fuel_type: "Compressed Natural Gas"
     },
     {
-      id:8,
-      fuel_type:"Propane"
+      id: 8,
+      fuel_type: "Propane"
     },
     {
-      id:9,
-      fuel_type:"Unleaded Gasoline"
+      id: 9,
+      fuel_type: "Unleaded Gasoline"
     },
     {
-      id:10,
-      fuel_type:"Leaded Gasoline"
+      id: 10,
+      fuel_type: "Leaded Gasoline"
     }
 
   ]
-  const [category,setCategory]=useState([])
+  const [category, setCategory] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch('http://localhost:5020/category',)
-    .then(res=>res.json())
-        .then(res=>{
-          setCategory(res)
-        }).catch(err=>console.log(err))
-  },[])
+      .then(res => res.json())
+      .then(res => {
+        setCategory(res)
+      }).catch(err => console.log(err))
+  }, [])
 
 
 
@@ -106,12 +115,12 @@ const UpdateProductPage = () => {
       <form onSubmit={handleSubmitProduct} className=" max-w-3xl mx-auto rounded-xl p-3 dark:shadow-lg dark:bg-gray-700 shadow-2xl">
         <h1 className="text-3xl my-10 text-center font-bold">Add Product Here</h1>
 
-        <select value={company} onChange={e=>setCompany(e.target.value)} className="select dark:text-black select-bordered w-full mb-1">
+        <select value={company} onChange={e => setCompany(e.target.value)} className="select dark:text-black select-bordered w-full mb-1">
           <option >Select Company</option>
-          {category?.map((one,i)=><option key={i} value={one.brand}>{one.brand}</option>)}
-          
+          {category?.map((one, i) => <option key={i} value={one.brand}>{one.brand}</option>)}
+
         </select>
-        
+
 
 
 
@@ -135,17 +144,17 @@ const UpdateProductPage = () => {
           <small>Max Speed /hr</small>
           <input onChange={e => setSpeed(e.target.value)} value={speed} type="text" placeholder="Enter Max Speed" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
-        
 
 
 
-        
+
+
 
         <label htmlFor="">Select Fuel Type</label>
-        <select defaultValue={fuelType} onChange={e=>setFuelType(e.target.value)} className="select dark:text-black select-bordered w-full mb-1">
+        <select defaultValue={fuelType} onChange={e => setFuelType(e.target.value)} className="select dark:text-black select-bordered w-full mb-1">
           <option >Select Fuel Types</option>
-          {fuelTypes?.map((one,i)=><option key={i} value={one.fuel_type}>{one.fuel_type}</option>)}
-          
+          {fuelTypes?.map((one, i) => <option key={i} value={one.fuel_type}>{one.fuel_type}</option>)}
+
         </select>
 
 
@@ -189,16 +198,16 @@ const UpdateProductPage = () => {
           <small>Short Description</small>
           <textarea onChange={e => setDes(e.target.value)} value={des} className="textarea dark:text-black textarea-bordered w-full" placeholder="Short Description"></textarea>
         </label>
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
         <div className="flex justify-center my-2">
-        <button type="submit" className="btn">Submit</button>
+          <button type="submit" className="btn">Submit</button>
         </div>
       </form>
     </div>
