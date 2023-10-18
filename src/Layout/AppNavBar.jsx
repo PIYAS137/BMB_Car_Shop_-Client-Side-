@@ -1,9 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom"
+import { FirebaseAuthContext } from "../Context/FirebaseContext";
 
 
 const AppNavBar = () => {
+const {user,SignOutUser}=useContext(FirebaseAuthContext)
 
+const handleClickLogOut=()=>{
+    SignOutUser()
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err))
+}
 
 
 // ----------------------------------------------------------------------
@@ -67,7 +74,7 @@ const AppNavBar = () => {
                 <p className="mr-3">Piyas Mahamude Alif</p>
                 <label tabIndex={0} className=" avatar">
                     <div className="w-12 rounded-full">
-                        <img src="https://i.ibb.co/0txbDWL/IMG-20210918-234954.jpg" />
+                        <img src={user?.photoURL ? user.photoURL : "https://i.pinimg.com/564x/a7/80/80/a7808059330f062de8a90e844d0558d1.jpg"} />
                     </div>
                 </label>
 
@@ -91,10 +98,15 @@ const AppNavBar = () => {
 
 
 
+                {
+                user ? 
+                <button onClick={handleClickLogOut} className="bg-red-500 hover:bg-red-400 ml-3 text-white px-4 block py-2 text-xs md:text-lg rounded-lg font-semibold">Log Out</button>
+                : 
+                <Link to='/login'><button className="btn ml-3 bg-red-500 hover:bg-red-400 border-none text-white font-semibold">LogIn</button></Link>
+                }
 
 
-
-                <Link to='/login'><button className="btn ml-3 bg-red-500 border-none text-white font-semibold">LogIn</button></Link>
+                
             </div>
         </nav>
         </div>

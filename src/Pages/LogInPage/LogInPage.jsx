@@ -1,16 +1,65 @@
-import { useState } from "react"
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
+import { FirebaseAuthContext } from "../../Context/FirebaseContext";
+import Swal from 'sweetalert2'
 
 const LogInPage = () => {
-
+  const { user,loading,UserUpdate,SignOutUser,GoogleLog,createUser }=useContext(FirebaseAuthContext)
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
   const [err,setErr]=useState('');
+  const navigate = useNavigate()
 
 
   const handleSubmit=(event)=>{
     event.preventDefault()
-    console.log(email,pass);
+    setErr('')
+
+
+    createUser(email,pass)
+    .then(res=>{
+      console.log(res);
+      navigate('/')
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Successfully Logged In User",
+        showConfirmButton: false,
+        timer: 2000
+      })
+    })
+    .catch(err=>{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: `${err.message}`,
+        showConfirmButton: false,
+        timer: 2000
+      })
+    })
+  }
+  const handleGoogleLog=()=>{
+    GoogleLog()
+    .then(res=>{
+      console.log(res);
+      navigate('/')
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Successfully Logged In User",
+        showConfirmButton: false,
+        timer: 2000
+      })
+    }).catch(err=>{
+      console.log(err);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: `${err.message}`,
+        showConfirmButton: false,
+        timer: 2000
+      })
+    })
   }
 
 
@@ -33,7 +82,7 @@ const LogInPage = () => {
         </div>
         <div className="form-control mt-6">
           <button type="submit" className="btn btn-primary">Login</button>
-          <button className="btn btn-primary mt-2">LOG in with GOOGLE</button>
+          <button onClick={handleGoogleLog} className="btn btn-primary mt-2">LOG in with GOOGLE</button>
         </div>
         <p className="dark:text-black">Dont have an account ? Go to <Link className=" text-blue-500 font-bold" to='/register'>Register</Link></p>
       </form>
