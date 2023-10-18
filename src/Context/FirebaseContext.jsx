@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import app from '../Firebase/Firebase';
 import { createContext, useEffect, useState } from 'react';
 
@@ -38,6 +38,10 @@ const FirebaseContext = ({children}) => {
         setLoading(true)
         return  signOut(FirebaseAuth)
     }
+    const loginUser=(email,pass)=>{
+        setLoading(true)
+        return signInWithEmailAndPassword(FirebaseAuth,email,pass)
+    }
 
     const UserUpdate = (res,name,photo)=>{
         setLoading(true)
@@ -49,7 +53,7 @@ const FirebaseContext = ({children}) => {
 
 
 
-    const sharedInfo={ user,loading,UserUpdate,SignOutUser,GoogleLog,createUser }
+    const sharedInfo={ user,loading,UserUpdate,loginUser,SignOutUser,GoogleLog,createUser }
 
   return (
     <FirebaseAuthContext.Provider value={sharedInfo}>

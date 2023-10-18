@@ -71,7 +71,7 @@ const handleClickLogOut=()=>{
                 </ul>
             </div>
             <div className="navbar-end">
-                <p className="mr-3">Piyas Mahamude Alif</p>
+                <p className="mr-3">{user?.displayName ? user.displayName : "VISITOR"}</p>
                 <label tabIndex={0} className=" avatar">
                     <div className="w-12 rounded-full">
                         <img src={user?.photoURL ? user.photoURL : "https://i.pinimg.com/564x/a7/80/80/a7808059330f062de8a90e844d0558d1.jpg"} />

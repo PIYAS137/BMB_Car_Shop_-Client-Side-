@@ -12,6 +12,7 @@ import DynamicCompany from '../Pages/DynamicCompanyPage/DynamicCompany'
 import DynamicOneCarPage from '../Pages/DynamicOneCarPage/DynamicOneCarPage'
 import AllCompanyLogo from '../Pages/AllCompanyLogo/AllCompanyLogo'
 import Server from '../Components/Server'
+import PrivateRoute from '../Private/PrivateRoute'
 
 const router = createBrowserRouter([
     {
@@ -32,16 +33,16 @@ const router = createBrowserRouter([
             },
             {
                 path:'/cart',
-                element:<CartPage/>
+                element:<PrivateRoute><CartPage/></PrivateRoute>
             },
             {
                 path:'/addproduct',
-                element:<AddProductPage/>
+                element:<PrivateRoute><AddProductPage/></PrivateRoute>
             },
             {
                 path:`discover/:company/updateproduct/:sid`,
                 loader:({params})=>fetch(`http://localhost:5020/getCar/${params.sid}`),
-                element:<UpdateProductPage/>
+                element:<PrivateRoute><UpdateProductPage/></PrivateRoute>
             },
             {
                 path:'/discover/:brand',
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
             {
                 path:`discover/:company/:sid`,
                 loader:({params})=>fetch(`http://localhost:5020/getCar/${params.sid}`),
-                element:<DynamicOneCarPage/>
+                element:<PrivateRoute><DynamicOneCarPage/></PrivateRoute>
             }
             ,{
                 path:'/discover',

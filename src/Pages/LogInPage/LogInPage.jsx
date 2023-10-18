@@ -1,13 +1,15 @@
 import { useContext, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FirebaseAuthContext } from "../../Context/FirebaseContext";
 import Swal from 'sweetalert2'
 
 const LogInPage = () => {
-  const { user,loading,UserUpdate,SignOutUser,GoogleLog,createUser }=useContext(FirebaseAuthContext)
+  const { loginUser,GoogleLog }=useContext(FirebaseAuthContext)
+  const location = useLocation()
+  console.log(location);
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
-  const [err,setErr]=useState('');
+  // const [err,setErr]=useState('');
   const navigate = useNavigate()
 
 
@@ -16,10 +18,10 @@ const LogInPage = () => {
     setErr('')
 
 
-    createUser(email,pass)
+    loginUser(email,pass)
     .then(res=>{
       console.log(res);
-      navigate('/')
+      navigate(`${location?.state ? location.state : '/'}`)
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -42,7 +44,7 @@ const LogInPage = () => {
     GoogleLog()
     .then(res=>{
       console.log(res);
-      navigate('/')
+      navigate(`${location?.state ? location.state : '/'}`)
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -84,7 +86,7 @@ const LogInPage = () => {
           <button type="submit" className="btn btn-primary">Login</button>
           <button onClick={handleGoogleLog} className="btn btn-primary mt-2">LOG in with GOOGLE</button>
         </div>
-        <p className="dark:text-black">Dont have an account ? Go to <Link className=" text-blue-500 font-bold" to='/register'>Register</Link></p>
+        <p className="dark:text-black">Dont have an account ? Go to <Link state={location.state} className=" text-blue-500 font-bold" to='/register'>Register</Link></p>
       </form>
     </div>
     </div>
