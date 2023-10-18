@@ -11,6 +11,7 @@ import RegisterPage from '../Pages/RegisterPage/RegisterPage'
 import DynamicCompany from '../Pages/DynamicCompanyPage/DynamicCompany'
 import DynamicOneCarPage from '../Pages/DynamicOneCarPage/DynamicOneCarPage'
 import AllCompanyLogo from '../Pages/AllCompanyLogo/AllCompanyLogo'
+import Server from '../Components/Server'
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,9 @@ const router = createBrowserRouter([
                 element:<UpdateProductPage/>
             },
             {
-                path:'/dynamiccompany',
+                path:'/discover/:brand',
+                
+                loader:({params})=>fetch(`http://localhost:5020/${params.brand}`),
                 element:<DynamicCompany/>
             },
             {
@@ -51,7 +54,11 @@ const router = createBrowserRouter([
             }
             ,{
                 path:'/discover',
+                loader:()=>fetch('http://localhost:5020/category'),
                 element:<AllCompanyLogo/>
+            },{
+                path:'/server',
+                element:<Server/>
             }
         ]
     }

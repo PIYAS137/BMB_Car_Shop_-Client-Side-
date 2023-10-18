@@ -1,9 +1,12 @@
 import OneCard from "../../Components/OneCard";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { useLoaderData } from "react-router-dom";
 
 const DynamicCompany = () => {
 
+    const loadedData = useLoaderData()
+    const {_id,logo,brand,since,width}=loadedData[0]
 
 
     const myarr = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }];
@@ -46,13 +49,15 @@ const DynamicCompany = () => {
 
     return (
         <div className="">
-            <div className=" max-w-7xl mx-auto grid grid-cols-5 items-center py-16">
+            <div className=" max-w-7xl mx-auto grid gap-10 grid-cols-5 items-center py-16">
                 <div className=" col-span-2">
-                    <img src='https://i.ibb.co/mFBvp1f/image.png' alt="" />
+                    <div className="w-full h-full flex justify-center items-center" >
+                    <img className=" max-h-60"  src={logo} alt="" />
+                    </div>
                 </div>
                 <div className=" col-span-3">
-                    <h1 className=" text-red-500 text-3xl font-bold">Jaguar XXL</h1>
-                    <h1 className=" font-semibold text-lg my-2">Since 1999</h1>
+                    <h1 className=" text-red-500 text-3xl font-bold">{brand}</h1>
+                    <h1 className=" font-semibold text-lg my-2">Since {since}</h1>
                     <p className="dark:text-gray-300 text-black italic">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum, ducimus! Non assumenda totam veritatis reiciendis inventore adipisci neque earum perspiciatis exercitationem aperiam, minus excepturi numquam tempora, quas possimus illum quae?
                     </p>
