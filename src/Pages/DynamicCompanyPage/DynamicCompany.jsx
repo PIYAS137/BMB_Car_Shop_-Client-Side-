@@ -1,14 +1,13 @@
 import OneCard from "../../Components/OneCard";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const DynamicCompany = () => {
-
+    const [cars,setCars]=useState([])
     const loadedData = useLoaderData()
     const {_id,logo,brand,since,width}=loadedData[0]
-
-
     const myarr = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }];
     const [sliderRef] = useKeenSlider(
         {
@@ -47,10 +46,19 @@ const DynamicCompany = () => {
     )
 
 
+    useEffect(()=>{
+        fetch(`http://localhost:5020/category/${brand}`)
+        .then(res=>res.json())
+        .then(res=>setCars(res))
+        .catch(err=>console.log(err))
+    },[])
+    console.log(cars);
+
+
     return (
         <div className="">
             <div className=" max-w-7xl mx-auto grid gap-10 grid-cols-5 items-center py-16">
-                <div className=" col-span-2">
+                <div className=" col-span-2 mb-10">
                     <div className="w-full h-full flex justify-center items-center" >
                     <img className=" max-h-60"  src={logo} alt="" />
                     </div>
@@ -105,11 +113,17 @@ const DynamicCompany = () => {
                 </div>
             </div>
 
-            <div className=" max-w-7xl mx-auto py-10">
+            <div className=" max-w-7xl mx-auto py-20">
                 <h1 className="text-5xl font-bold text-center">Company Products</h1>
+                <h1 className="text-2xl mt-5 font-semibold text-center">Available Product : {cars.length} </h1>
+                {cars.length==0 && <div className="my-20">
+                            <h1 className=" text-center p-5 rounded-xl font-bold  bg-red-700 text-3xl w-full">We are out of stock for {brand}</h1>
+                            <Link className="flex justify-center" to='/discover'><button className="btn mt-4 bg-red-800 border-none text-white hover:bg-red-900">Discover Others</button></Link>
+                        </div>}
                 <div className="grid grid-cols-3 gap-5 mt-20">
+                    
                     {
-                        myarr.map((one) => <OneCard key={one.id} data={one} />)
+                        cars?.map((one) => <OneCard key={one._id} data={one} />)
                     }
                 </div>
             </div>

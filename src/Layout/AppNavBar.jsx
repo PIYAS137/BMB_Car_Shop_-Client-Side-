@@ -34,6 +34,7 @@ const AppNavBar = () => {
     const NavLinks = <>
         <li className="text-sm font-semibol"><NavLink to='/server'>Server</NavLink></li>
         <li className="text-sm font-semibol"><NavLink to='/'>Home</NavLink></li>
+        <li className="text-sm font-semibol"><NavLink to='/discover'>Products</NavLink></li>
         <li className="text-sm font-semibol"><NavLink to='/addproduct'>Add Product</NavLink></li>
         <li className="text-sm font-semibol relative"><NavLink to='/cart'>Cart <sup className=" -top-0 right-0 rounded-full flex justify-center items-center text-white bg-red-500 w-4 h-4 absolute">9</sup></NavLink></li>
     </>

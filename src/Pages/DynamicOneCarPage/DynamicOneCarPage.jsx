@@ -1,10 +1,12 @@
-import { useNavigate } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
 
 
 const DynamicOneCarPage = () => {
     const navigate = useNavigate()
+    const loadedData = useLoaderData()
+    const {modelName,img,price,rating,description:des,milage,fuelType,company,fuelTankCapacity,seatingCapacity,release,speed,cylinder,torque,hp} = loadedData;
 
-
+    console.log(loadedData);
 
     const handleBackPage=()=>{
         navigate(-1)
@@ -14,12 +16,13 @@ const DynamicOneCarPage = () => {
         <div className=" max-w-7xl mx-auto py-20">
             <div className="grid gap-10 grid-cols-3">
                 <div className=" col-span-2 rounded-xl overflow-hidden">
-                    <img src="https://i.ibb.co/f0YCWVM/wallpaperflare-com-wallpaper-8.jpg" alt="" />
+                    <img className="w-full" src={img} alt="" />
+                    
                 </div>
                 <div className=" col-span-1  items-center justify-center flex flex-col">
-                    <h1 className=" text-3xl mb-5 text-red-500 font-bold">Brand Name : Default Name</h1>
-                    <h1 className=" text-xl mb-5 font-bold">Model Name : Default Name</h1>
-                    <h1 className="w-full text-center text-lg bg-red-500 p-3 rounded-xl text-white font-semibold">PRICE : $ 10000</h1>
+                    <h1 className=" text-3xl mb-5 text-red-500 font-bold">Brand Name : {company}</h1>
+                    <h1 className=" text-xl mb-5 font-bold">Model Name : {modelName}</h1>
+                    <h1 className="w-full text-center text-lg bg-red-500 p-3 rounded-xl text-white font-semibold">PRICE : ${price}</h1>
                     <button className="w-full text-center text-lg bg-orange-500 dark:bg-orange-600 dark:text-white mt-3 p-3 rounded-xl text-black font-semibold">Add to Cart</button>
                     <button onClickCapture={handleBackPage} className="w-full text-center text-lg bg-blue-400 dark:bg-blue-900 dark:text-white mt-3 p-3 rounded-xl font-semibold">Discover More</button>
                     
@@ -27,12 +30,12 @@ const DynamicOneCarPage = () => {
                 
             </div>
             <div className="border w-full rounded-xl mt-20 p-4">
-                        <h1 className=" border-b py-2 text-lg">Milage : 45L</h1>
-                        <h1 className=" border-b py-2 text-lg">Fuel Type : Desel</h1>
-                        <h1 className=" border-b py-2 text-lg">Fuel Tank Capacity : 50L</h1>
-                        <h1 className=" border-b py-2 text-lg">Universal Rating : 5 star</h1>
-                        <h1 className=" border-b py-2 text-lg">Release Date : 12 sep 2023</h1>
-                        <div>Summary : <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus molestiae saepe excepturi delectus voluptatem harum mollitia odit eum sed aliquam fugiat quod, dolor consequuntur, placeat deleniti consequatur officiis possimus praesentium?</p></div>
+                        <h1 className=" border-b py-2 text-lg">Milage : {milage}L</h1>
+                        <h1 className=" border-b py-2 text-lg">Fuel Type : {fuelType}</h1>
+                        <h1 className=" border-b py-2 text-lg">Fuel Tank Capacity : {fuelTankCapacity}L</h1>
+                        <h1 className=" border-b py-2 text-lg">Universal Rating : {rating} star</h1>
+                        <h1 className=" border-b py-2 text-lg">Release Date : {release}</h1>
+                        <div><span className=" font-bold">Summary :</span> <p>{des}</p></div>
                     </div>
         </div>
     )

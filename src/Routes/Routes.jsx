@@ -39,7 +39,8 @@ const router = createBrowserRouter([
                 element:<AddProductPage/>
             },
             {
-                path:'/updateproduct',
+                path:`discover/:company/updateproduct/:sid`,
+                loader:({params})=>fetch(`http://localhost:5020/getCar/${params.sid}`),
                 element:<UpdateProductPage/>
             },
             {
@@ -49,7 +50,8 @@ const router = createBrowserRouter([
                 element:<DynamicCompany/>
             },
             {
-                path:'/oneCarDet',
+                path:`discover/:company/:sid`,
+                loader:({params})=>fetch(`http://localhost:5020/getCar/${params.sid}`),
                 element:<DynamicOneCarPage/>
             }
             ,{

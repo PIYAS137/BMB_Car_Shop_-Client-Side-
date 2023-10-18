@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 
 const UpdateProductPage = () => {
 
+  const loadedData = useLoaderData();
+  console.log(loadedData);
 
-  const [modelName, setModelName] = useState('')
-  const [img, setImg] = useState('')
-  const [price, setPrice] = useState('');
-  const [rating, setRating] = useState('');
-  const [des, setDes] = useState('');
-  const [milage, setMilage] = useState('');
-  const [fuelType, setFuelType] = useState('')
-  const [company, setCompany] = useState('');
-  const [fuelTankCapacity, setFuelTankCapacity] = useState('');
-  const [seatingCapacity, setSeatingCapacity] = useState('')
-  const [release,setRelease]=useState('');
+  // const {modelName,img,price,rating,description:des,milage,fuelType,company,fuelTankCapacity,seatingCapacity,release,speed,cylinder,torque,hp} = loadedData;
 
+  const [modelName, setModelName] = useState(loadedData.modelName)
+  const [img, setImg] = useState(loadedData.img)
+  const [price, setPrice] = useState(loadedData.price);
+  const [rating, setRating] = useState(loadedData.rating);
+  const [des, setDes] = useState(loadedData.description);
+  const [milage, setMilage] = useState(loadedData.milage);
+  const [fuelType, setFuelType] = useState(loadedData.fuelType)
+  const [company, setCompany] = useState(loadedData.company);
+  const [fuelTankCapacity, setFuelTankCapacity] = useState(loadedData.fuelTankCapacity);
+  const [seatingCapacity, setSeatingCapacity] = useState(loadedData.seatingCapacity)
+  const [release,setRelease]=useState(loadedData.release);
+  const [speed,setSpeed]=useState(loadedData.speed)
+  const [cylinder,setCylinder]=useState(loadedData.cylinder)
+  const [torque,setTorque]=useState(loadedData.torque)
+  const [hp,setHp]=useState(loadedData.hp)
 
 
   const handleSubmitProduct=(event)=>{
@@ -23,21 +31,87 @@ const UpdateProductPage = () => {
 
     const newProduct = {modelName,img,price,rating,description:des,milage,fuelType,company,fuelTankCapacity,seatingCapacity,release}
     console.log(newProduct);
+
+    fetch(`http://localhost:5020/${loadedData._id}`,{
+      method:"PUT",
+      headers:{
+        'content-type':'application/json'
+      },body:JSON.stringify(newProduct)
+    })
+    .then(res=>res.json())
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err))
+
+
+
   }
+
+  const fuelTypes=[
+    {
+      id:1,
+      fuel_type:"Diesel"
+    },
+    {
+      id:2,
+      fuel_type:"Petrol"
+    },
+    {
+      id:3,
+      fuel_type:"Ethanol"
+    },
+    {
+      id:4,
+      fuel_type:"Biodiesel"
+    },
+    {
+      id:5,
+      fuel_type:"Natural Gas"
+    },
+    {
+      id:6,
+      fuel_type:"Liquefied Petroleum Gas"
+    },
+    {
+      id:7,
+      fuel_type:"Compressed Natural Gas"
+    },
+    {
+      id:8,
+      fuel_type:"Propane"
+    },
+    {
+      id:9,
+      fuel_type:"Unleaded Gasoline"
+    },
+    {
+      id:10,
+      fuel_type:"Leaded Gasoline"
+    }
+
+  ]
+  const [category,setCategory]=useState([])
+
+  useEffect(()=>{
+    fetch('http://localhost:5020/category',)
+    .then(res=>res.json())
+        .then(res=>{
+          setCategory(res)
+        }).catch(err=>console.log(err))
+  },[])
 
 
 
   return (
     <div className="py-10 max-w-7xl mx-auto">
       <form onSubmit={handleSubmitProduct} className=" max-w-3xl mx-auto rounded-xl p-3 dark:shadow-lg dark:bg-gray-700 shadow-2xl">
-        <h1 className="text-3xl my-10 text-center font-bold">Update Product Here</h1>
+        <h1 className="text-3xl my-10 text-center font-bold">Add Product Here</h1>
 
-        <select defaultValue={company} onChange={e=>setCompany(e.target.value)} className="select dark:text-black select-bordered w-full mb-1">
+        <select value={company} onChange={e=>setCompany(e.target.value)} className="select dark:text-black select-bordered w-full mb-1">
           <option >Select Company</option>
-          <option value="asdf">Han Solo</option>
-          <option value="basd">Greedo</option>
+          {category?.map((one,i)=><option key={i} value={one.brand}>{one.brand}</option>)}
+          
         </select>
-
+        
 
 
 
@@ -58,20 +132,54 @@ const UpdateProductPage = () => {
           <input onChange={e => setMilage(e.target.value)} value={milage} type="text" placeholder="Enter Milage" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
         <label htmlFor="">
-          <small>Fuel Type</small>
-          <input onChange={e => setFuelType(e.target.value)} value={fuelType} type="text" placeholder="Enter fuel type" className="input input-bordered dark:text-black w-full mb-1" />
+          <small>Max Speed /hr</small>
+          <input onChange={e => setSpeed(e.target.value)} value={speed} type="text" placeholder="Enter Max Speed" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
+        
+
+
+
+        
+
+        <label htmlFor="">Select Fuel Type</label>
+        <select defaultValue={fuelType} onChange={e=>setFuelType(e.target.value)} className="select dark:text-black select-bordered w-full mb-1">
+          <option >Select Fuel Types</option>
+          {fuelTypes?.map((one,i)=><option key={i} value={one.fuel_type}>{one.fuel_type}</option>)}
+          
+        </select>
+
+
+
         <label htmlFor="">
           <small>Fuel tank capacity</small>
           <input onChange={e => setFuelTankCapacity(e.target.value)} value={fuelTankCapacity} type="number" placeholder="Enter fuel tank capacity in Liter" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
+
+
+        <label htmlFor="">
+          <small>Number of Cylinder</small>
+          <input onChange={e => setCylinder(e.target.value)} value={cylinder} type="number" placeholder="Enter number of cylinder" className="input input-bordered dark:text-black w-full mb-1" />
+        </label>
+        <label htmlFor="">
+          <small>Torque</small>
+          <input onChange={e => setTorque(e.target.value)} value={torque} type="text" placeholder="Enter torque /RPM" className="input input-bordered dark:text-black w-full mb-1" />
+        </label>
+        <label htmlFor="">
+          <small>Engine / CC</small>
+          <input onChange={e => setHp(e.target.value)} value={hp} type="number" placeholder="Enter Engine Power / HP" className="input input-bordered dark:text-black w-full mb-1" />
+        </label>
+
+
+
+
+
         <label htmlFor="">
           <small>Seating capacity</small>
           <input onChange={e => setSeatingCapacity(e.target.value)} value={seatingCapacity} type="number" min={1} placeholder="Enter seating capacity" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
         <label htmlFor="">
           <small>Universal Rating</small>
-          <input onChange={e => setRating(e.target.value)} value={rating} type="number" min={0} max={10} placeholder="Enter Universal Rating" className="input input-bordered dark:text-black w-full mb-1" />
+          <input onChange={e => setRating(e.target.value)} value={rating} type="text" min={0} max={10} placeholder="Enter Universal Rating" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
         <label htmlFor="">
           <small>Model Release Date</small>
@@ -79,7 +187,7 @@ const UpdateProductPage = () => {
         </label>
         <label htmlFor="">
           <small>Short Description</small>
-          <textarea onChange={e => setDes(e.target.value)} value={des} className="textarea textarea-bordered w-full" placeholder="Short Description"></textarea>
+          <textarea onChange={e => setDes(e.target.value)} value={des} className="textarea dark:text-black textarea-bordered w-full" placeholder="Short Description"></textarea>
         </label>
         
         

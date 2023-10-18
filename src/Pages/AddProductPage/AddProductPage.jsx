@@ -154,10 +154,10 @@ const AddProductPage = () => {
         </label>
         <label htmlFor="">
           <small>Torque</small>
-          <input onChange={e => setTorque(e.target.value)} value={torque} type="number" placeholder="Enter torque /RPM" className="input input-bordered dark:text-black w-full mb-1" />
+          <input onChange={e => setTorque(e.target.value)} value={torque} type="text" placeholder="Enter torque /RPM" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
         <label htmlFor="">
-          <small>Engine /HP</small>
+          <small>Engine / CC</small>
           <input onChange={e => setHp(e.target.value)} value={hp} type="number" placeholder="Enter Engine Power / HP" className="input input-bordered dark:text-black w-full mb-1" />
         </label>
 
