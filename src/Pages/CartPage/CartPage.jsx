@@ -91,10 +91,10 @@ const CartPage = () => {
 
 
   return (
-    <div className=" min-h-screen">
-      <h1 className=" text-center mt-16 text-xl font-bold">Total <span className=" text-red-500">{carts.length}</span> Item Found</h1>
-      <div className="grid grid-cols-3 max-w-7xl gap-5 mx-auto  py-16">
-        <div className=" col-span-2">
+    <div className="px-2 lg:px-0 min-h-screen">
+      <h1 className=" text-center mt-8 md:mt-16 text-xl font-bold">Total <span className=" text-red-500">{carts.length}</span> Item Found</h1>
+      <div className="md:grid flex flex-col-reverse md:grid-cols-3 max-w-7xl gap-5 mx-auto py-8 md:py-16">
+        <div className=" md:col-span-2">
 
           {
             carts.length == 0 && <div>
@@ -105,7 +105,7 @@ const CartPage = () => {
           {
             carts && carts.map(one => {
               return (
-                <div key={one._id} className="mb-5 flex justify-start border dark:border-gray-700 rounded-xl overflow-hidden">
+                <div key={one._id} className="mb-5 flex flex-col items-center md:justify-center md:py-0 lg:flex-row justify-start border dark:border-gray-700 rounded-xl overflow-hidden">
                   <img width="300" src={one.img} alt="" />
                   <div className=" ml-5 flex flex-col justify-center">
                     <h1>Brand Name : {one.company}</h1>
@@ -113,7 +113,7 @@ const CartPage = () => {
                     <p>Quantity : 1</p>
                     <p>Price : ${one.price}</p>
                   </div>
-                  <div className="btn-group items-center space-y-1 flex justify-center btn-group-vertical ml-auto">
+                  <div className="btn-group w-full lg:w-auto my-2 lg:my-0 items-center space-y-1 flex justify-center btn-group-vertical ml-auto">
                     <button onClick={() => hanldeClickDeleteItem(one._id)} className="btn mr-3 hover:bg-red-400 bg-red-500 border-none text-white">Delete</button>
                   </div>
                 </div>

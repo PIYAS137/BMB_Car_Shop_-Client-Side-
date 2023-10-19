@@ -11,13 +11,14 @@ import RegisterPage from '../Pages/RegisterPage/RegisterPage'
 import DynamicCompany from '../Pages/DynamicCompanyPage/DynamicCompany'
 import DynamicOneCarPage from '../Pages/DynamicOneCarPage/DynamicOneCarPage'
 import AllCompanyLogo from '../Pages/AllCompanyLogo/AllCompanyLogo'
-import Server from '../Components/Server'
 import PrivateRoute from '../Private/PrivateRoute'
+import ErrorPage from '../Pages/ErrorPage/ErrorPage'
 
 const router = createBrowserRouter([
     {
         path:"/",
         element:<RootPage/>,
+        errorElement:<ErrorPage/>,
         children:[
             {
                 path:'/',
@@ -59,9 +60,6 @@ const router = createBrowserRouter([
                 path:'/discover',
                 loader:()=>fetch('http://localhost:5020/category'),
                 element:<AllCompanyLogo/>
-            },{
-                path:'/server',
-                element:<Server/>
             }
         ]
     }

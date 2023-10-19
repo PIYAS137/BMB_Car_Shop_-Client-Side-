@@ -66,7 +66,7 @@ const LogInPage = () => {
 
 
   return (
-    <div className=" h-screen flex flex-col space-y-10 justify-center items-center">
+    <div className="mx-2 lg:mx-0 h-screen flex flex-col space-y-10 justify-center items-center">
       <h1 className="text-3xl font-bold -mt-52">Log In Here</h1>
       <div className="card flex-shrink-0 w-full max-w-xl mx-auto shadow-2xl bg-base-100">
       <form onSubmit={handleSubmit} className="card-body">

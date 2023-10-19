@@ -38,13 +38,13 @@ const DynamicOneCarPage = () => {
     }
 
     return (
-        <div className=" max-w-7xl mx-auto py-20">
-            <div className="grid gap-10 grid-cols-3">
-                <div className=" col-span-2 rounded-xl overflow-hidden">
+        <div className=" max-w-7xl mx-auto py-10 md:py-20">
+            <div className="grid gap-10 px-2 md:px-0 lg:grid-cols-3">
+                <div className="px-2 lg:col-span-2 rounded-xl overflow-hidden">
                     <img className="w-full" src={img} alt="" />
 
                 </div>
-                <div className=" col-span-1  items-center justify-center flex flex-col">
+                <div className="mx-auto text-center md:text-left lg:col-span-1  items-center justify-center flex flex-col">
                     <h1 className=" text-3xl mb-5 text-red-500 font-bold">Brand Name : {company}</h1>
                     <h1 className=" text-xl mb-5 font-bold">Model Name : {modelName}</h1>
                     <h1 className="w-full text-center text-lg bg-red-500 p-3 rounded-xl text-white font-semibold">PRICE : ${price}</h1>
