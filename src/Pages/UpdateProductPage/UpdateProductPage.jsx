@@ -5,7 +5,6 @@ import Swal from 'sweetalert2'
 const UpdateProductPage = () => {
 
   const loadedData = useLoaderData();
-  console.log(loadedData);
   const navigate = useNavigate()
 
   const [modelName, setModelName] = useState(loadedData.modelName)
@@ -201,7 +200,7 @@ const UpdateProductPage = () => {
 
 
         <div className="flex justify-center my-2">
-          <button type="submit" className="btn">Submit</button>
+          <button type="submit" className="btn">Update Product</button>
         </div>
       </form>
     </div>

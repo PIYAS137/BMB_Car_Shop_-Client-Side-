@@ -71,7 +71,7 @@ const DynamicCompany = () => {
                     <h1 className=" text-red-500 text-3xl font-bold">{brand}</h1>
                     <h1 className=" font-semibold text-lg my-2">Since {since}</h1>
                     <p className="dark:text-gray-300 px-3 md:px-0 text-black italic">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum, ducimus! Non assumenda totam veritatis reiciendis inventore adipisci neque earum perspiciatis exercitationem aperiam, minus excepturi numquam tempora, quas possimus illum quae?
+                    Automotive companies are businesses that design, manufacture, and sell vehicles and related products in the automotive industry. These companies are involved in the production of cars, trucks, motorcycles, and various other types of vehicles.
                     </p>
                 </div>
             </div>
@@ -89,7 +89,7 @@ const DynamicCompany = () => {
                                                 <h1 className=" text-white">!! Discount for TODAY !!</h1>
                                             </div>
                                             <h1 className=" text-6xl md:text-8xl text-white font-bold">BMB</h1>
-                                            <h1 className="text-xs md:text-md text-white">Bangladesh Motors Business</h1>
+                                            <h1 className="text-xs md:text-[16px] text-white">Bangladesh Motors Business</h1>
                                             <h1 className=" text-4xl md:text-7xl uppercase mt-10 text-white font-bold">{brand}</h1>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@ const DynamicCompany = () => {
                 <h1 className="text-5xl font-bold text-center">Company Products</h1>
                 <h1 className="text-2xl mt-5 font-semibold text-center">Available Product : {cars.length} </h1>
                 {cars.length == 0 && <div className="my-20">
-                    <h1 className=" text-center p-5 rounded-xl font-bold  bg-red-700 text-3xl w-full">We are out of stock for {brand}</h1>
+                    <h1 className=" text-center p-5 rounded-xl font-bold text-white bg-red-700 text-3xl w-full">We are out of stock for {brand}</h1>
                     <Link className="flex justify-center" to='/discover'><button className="btn mt-4 bg-red-800 border-none text-white hover:bg-red-900">Discover Others</button></Link>
                 </div>}
                 <div className="grid grid-cols-1 px-2 md:px-0 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-20">

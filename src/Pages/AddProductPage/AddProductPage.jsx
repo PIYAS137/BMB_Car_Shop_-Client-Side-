@@ -70,7 +70,6 @@ const AddProductPage = () => {
     event.preventDefault();
 
     const newProduct = { modelName, img, price, rating, description: des, milage, fuelType, company, fuelTankCapacity, seatingCapacity, release, speed, cylinder, torque, hp }
-    console.log(newProduct);
 
     fetch('http://localhost:5020/addcars', {
       method: "POST",
@@ -231,7 +230,7 @@ const AddProductPage = () => {
 
 
         <div className="flex justify-center my-2">
-          <button type="submit" className="btn">Submit</button>
+          <button type="submit" className="btn">Add Product</button>
         </div>
       </form>
     </div>

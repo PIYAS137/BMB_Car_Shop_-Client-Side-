@@ -6,7 +6,6 @@ import Swal from 'sweetalert2'
 const LogInPage = () => {
   const { loginUser,GoogleLog }=useContext(FirebaseAuthContext)
   const location = useLocation()
-  console.log(location);
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
   // const [err,setErr]=useState('');

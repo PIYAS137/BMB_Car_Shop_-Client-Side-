@@ -57,19 +57,26 @@ const Banner = () => {
                     <button onClick={handleAllCompnay} className="btn mt-3 md:mt-0">Discover Products</button>
                 </div>
             </div>
-            <div  style={{ backgroundImage: `url(https://i.ibb.co/nDvvDT4/wallpaperflare-com-wallpaper-7.jpg)` }} className="keen-slider__slide bgx number-slide1 h-full  bgx">
+            <div  style={{ backgroundImage: `url(https://i.ibb.co/5YWZMhf/wallpaperflare-com-wallpaper-28.jpg)` }} className="keen-slider__slide bgx number-slide1 h-full  bgx">
                 <div className="w-full h-full bgp flex justify-center flex-col items-center">
                     <h1 className="text-8xl text-white font-bold">BMB</h1>
-                    <h1 className="text-md text-white">Bangladesh Motors Business</h1>
-                    <p className="text-white max-w-4xl md:px-10 my-10 text-center text-lg hidden md:block">Drive into the world of BMB, where automotive excellence has been our passion since 1999. With over two decades of dedication to innovation and design, we're at the forefront of the automotive industry. Explore our commitment to crafting exceptional vehicles and experience a legacy of driving pleasure that's unmatched</p>
+                    <h1 className="text-md mb-2 text-white">Bangladesh Motors Business</h1>
                     <button onClick={handleAllCompnay} className="btn mt-3 md:mt-0">Discover Products</button>
                 </div>
             </div>
-            <div  style={{ backgroundImage: `url(https://i.ibb.co/VCnJS1v/wallpaperflare-com-wallpaper-6.jpg)` }} className="keen-slider__slide bgx number-slide1 h-full  bgx">
+            <div  style={{ backgroundImage: `url(https://i.ibb.co/ww9pBC3/wallpaperflare-com-wallpaper-47.jpg)` }} className="keen-slider__slide bgx number-slide1 h-full  bgx">
                 <div className="w-full h-full bgp flex justify-center flex-col items-center">
                     <h1 className="text-8xl text-white font-bold">BMB</h1>
                     <h1 className="text-md text-white">Bangladesh Motors Business</h1>
-                    <p className="text-white md:px-10 max-w-4xl my-10 text-center text-lg hidden md:block">Drive into the world of BMB, where automotive excellence has been our passion since 1999. With over two decades of dedication to innovation and design, we're at the forefront of the automotive industry. Explore our commitment to crafting exceptional vehicles and experience a legacy of driving pleasure that's unmatched</p>
+                    <p className="text-white max-w-4xl md:px-10 my-10 text-center text-lg hidden md:block">Drive into the world of BMB, where automotive excellence has been our passion since 1999.</p>
+                    <button onClick={handleAllCompnay} className="btn mt-3 md:mt-0">Discover Products</button>
+                </div>
+            </div>
+            <div  style={{ backgroundImage: `url(https://i.ibb.co/X2WjXyr/wallpaperflare-com-wallpaper-38.jpg)` }} className="keen-slider__slide bgx number-slide1 h-full  bgx">
+                <div className="w-full h-full bgp flex justify-center flex-col items-center">
+                    <h1 className="text-8xl text-white font-bold">BMB</h1>
+                    <h1 className="text-md text-white">Bangladesh Motors Business</h1>
+                    <p className="text-white md:px-10 max-w-4xl my-10 text-center text-lg hidden md:block"> With over two decades of dedication to innovation and design, we're at the forefront of the automotive industry. Explore our commitment to crafting exceptional vehicles and experience a legacy of driving pleasure that's unmatched</p>
                     <button onClick={handleAllCompnay} className="btn mt-3 md:mt-0">Discover Products</button>
                 </div>
             </div>

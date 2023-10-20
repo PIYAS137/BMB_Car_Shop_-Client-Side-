@@ -12,6 +12,15 @@ const ClientsSection = () => {
         <div className="shadow-lg mx-5 dark:bg-slate-600 bg-gray-200 p-5 text-center rounded-b-xl flex flex-col justify-center items-center  my-20">
           <div className="-mt-12">
             <div className=" bg-white w-20 h-20 p-1 rounded-full mx-auto" >
+              <img className="w-full h-full rounded-full mx-auto object-cover" src="https://i.ibb.co/F60MHS9/IMG-20220219-WA0053.jpg" alt="" />
+            </div>
+            <p className=" text-md mt-2 font-semibold">Piyas</p>
+            <p className="text-gray-400 text-sm">Your's products are very great outstanding!</p>
+          </div>
+        </div>
+        <div className="shadow-lg mx-5 dark:bg-slate-600 bg-gray-200 p-5 text-center rounded-b-xl flex flex-col justify-center items-center  my-20">
+          <div className="-mt-12">
+            <div className=" bg-white w-20 h-20 p-1 rounded-full mx-auto" >
               <img className="w-full h-full rounded-full mx-auto object-cover" src="https://i.ibb.co/K5Krx1K/IMG-6035.jpg" alt="" />
             </div>
             <p className=" text-md mt-2 font-semibold">Rizvee</p>
