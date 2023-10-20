@@ -8,18 +8,15 @@ const LogInPage = () => {
   const location = useLocation()
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
-  // const [err,setErr]=useState('');
   const navigate = useNavigate()
 
 
   const handleSubmit=(event)=>{
     event.preventDefault()
-    setErr('')
 
 
     loginUser(email,pass)
     .then(res=>{
-      console.log(res);
       navigate(`${location?.state ? location.state : '/'}`)
       Swal.fire({
         position: 'top-end',
@@ -42,7 +39,6 @@ const LogInPage = () => {
   const handleGoogleLog=()=>{
     GoogleLog()
     .then(res=>{
-      console.log(res);
       navigate(`${location?.state ? location.state : '/'}`)
       Swal.fire({
         position: 'top-end',
@@ -52,7 +48,6 @@ const LogInPage = () => {
         timer: 2000
       })
     }).catch(err=>{
-      console.log(err);
       Swal.fire({
         position: 'top-end',
         icon: 'error',
