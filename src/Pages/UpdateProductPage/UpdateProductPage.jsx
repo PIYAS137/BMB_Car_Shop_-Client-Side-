@@ -30,7 +30,7 @@ const UpdateProductPage = () => {
     const newProduct = { modelName, img, price, rating, description: des, milage, fuelType, company, fuelTankCapacity, seatingCapacity, release, speed, cylinder, torque, hp }
     console.log(newProduct);
 
-    fetch(`http://localhost:5020/${loadedData._id}`, {
+    fetch(`https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/${loadedData._id}`, {
       method: "PUT",
       headers: {
         'content-type': 'application/json'
@@ -111,7 +111,7 @@ const UpdateProductPage = () => {
   const [category, setCategory] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5020/category',)
+    fetch('https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/category',)
       .then(res => res.json())
       .then(res => {
         setCategory(res)

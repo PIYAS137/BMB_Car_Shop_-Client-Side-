@@ -8,7 +8,7 @@ const CompanyLogoMarquee = () => {
 
     const [datas, setDatas] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5020/category')
+        fetch('https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/category')
             .then(res => res.json())
             .then(res => setDatas(res))
             .catch(err => console.log(err))

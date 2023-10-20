@@ -18,7 +18,7 @@ const OneCard = ({data,deletedItemCount}) => {
           }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5020/del/${id}`,{
+                fetch(`https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/del/${id}`,{
                     method:"DELETE"
                 }).then(res=>res.json())
                 .then(res=>{

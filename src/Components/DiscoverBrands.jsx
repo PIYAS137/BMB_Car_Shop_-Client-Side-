@@ -6,7 +6,7 @@ const DiscoverBrands = () => {
 
     const [brands,setBrands]=useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5020/category`)
+        fetch(`https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/category`)
             .then(res => res.json())
             .then(res => setBrands(res))
             .catch(err => console.log(err))

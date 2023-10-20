@@ -47,7 +47,7 @@ const DynamicCompany = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5020/category/${brand}`)
+        fetch(`https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/category/${brand}`)
             .then(res => res.json())
             .then(res => setCars(res))
             .catch(err => console.log(err))

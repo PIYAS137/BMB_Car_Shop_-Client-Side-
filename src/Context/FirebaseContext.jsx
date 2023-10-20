@@ -1,7 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import app from '../Firebase/Firebase';
 import { createContext, useEffect, useState } from 'react';
-import { addToLocalStorage, getStoredCartData } from '../Functions/LocalStorage';
+// import { addToLocalStorage, getStoredCartData } from '../Functions/LocalStorage';
 
 
 
@@ -18,13 +18,13 @@ const FirebaseContext = ({children}) => {
     const [loading,setLoading]=useState(true);
     
 
-    const AddProductToCart=(id)=>{
-        return addToLocalStorage(id)
-    }
-    const GetDataFromLS=()=>{
-        const datas = getStoredCartData
-        return datas
-    }
+    // const AddProductToCart=(id)=>{
+    //     return addToLocalStorage(id)
+    // }
+    // const GetDataFromLS=()=>{
+    //     const datas = getStoredCartData
+    //     return datas
+    // }
 
     const createUser=(email,pass)=>{
         setLoading(true)
@@ -62,9 +62,9 @@ const FirebaseContext = ({children}) => {
         })
     }
 
+// AddProductToCart,GetDataFromLS
 
-
-    const sharedInfo={ user,loading,UserUpdate,loginUser,SignOutUser,GoogleLog,createUser,AddProductToCart,GetDataFromLS }
+    const sharedInfo={ user,loading,UserUpdate,loginUser,SignOutUser,GoogleLog,createUser, }
 
   return (
     <FirebaseAuthContext.Provider value={sharedInfo}>

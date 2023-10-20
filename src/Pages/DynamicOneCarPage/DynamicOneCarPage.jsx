@@ -1,39 +1,70 @@
-import { useContext } from "react"
+
+import { useEffect, useState } from "react"
 import { useLoaderData, useNavigate } from "react-router-dom"
-import { FirebaseAuthContext } from "../../Context/FirebaseContext"
 import Swal from 'sweetalert2'
 
 
 const DynamicOneCarPage = () => {
     const navigate = useNavigate()
     const loadedData = useLoaderData()
-    const { AddProductToCart } = useContext(FirebaseAuthContext)
     const { modelName, img, price, rating, description: des, milage, fuelType, company, fuelTankCapacity, seatingCapacity, release, speed, cylinder, torque, hp } = loadedData;
-
+    const [carts, setCarts] = useState([])
 
     const handleBackPage = () => {
         navigate(-1)
     }
 
+    useEffect(() => {
+        fetch('https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/cart/get')
+            .then(res => res.json())
+            .then(res => setCarts(res))
+            .catch(err => console.log(err))
+    }, [carts])
+
     const handleCart = () => {
-        const x = AddProductToCart(loadedData._id)
-        if (x !== -1) {
+        const CreateCartProduct = {
+            m_data: loadedData,
+            quan: 1
+        }
+        const x = carts.filter(one => one.m_data._id == loadedData._id)
+        if (x.length > 0) {
             Swal.fire({
                 position: 'top-end',
-                icon: 'success',
-                title: 'Sucessfully added to Cart',
+                icon: 'warning',
+                title: 'Already Added to Cart !',
                 showConfirmButton: false,
                 timer: 1500
             })
-        }else{
-            Swal.fire({
-                position: 'top-end',
-                icon: 'info',
-                title: 'Already Added Item !',
-                showConfirmButton: false,
-                timer: 1500
-              })
+        } else {
+            fetch('https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/cart/post', {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(CreateCartProduct)
+            }).then(res => res.json())
+                .then(res => {
+                    if (res.insertedId) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Sucessfully added to Cart',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                }).catch(err => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'info',
+                        title: `${err.message}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
         }
+
+
 
     }
 

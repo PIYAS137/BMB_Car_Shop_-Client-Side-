@@ -42,23 +42,23 @@ const router = createBrowserRouter([
             },
             {
                 path:`discover/:company/updateproduct/:sid`,
-                loader:({params})=>fetch(`http://localhost:5020/getCar/${params.sid}`),
+                loader:({params})=>fetch(`https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/getCar/${params.sid}`),
                 element:<PrivateRoute><UpdateProductPage/></PrivateRoute>
             },
             {
                 path:'/discover/:brand',
                 
-                loader:({params})=>fetch(`http://localhost:5020/${params.brand}`),
+                loader:({params})=>fetch(`https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/${params.brand}`),
                 element:<DynamicCompany/>
             },
             {
                 path:`discover/:company/:sid`,
-                loader:({params})=>fetch(`http://localhost:5020/getCar/${params.sid}`),
+                loader:({params})=>fetch(`https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/getCar/${params.sid}`),
                 element:<PrivateRoute><DynamicOneCarPage/></PrivateRoute>
             }
             ,{
                 path:'/discover',
-                loader:()=>fetch('http://localhost:5020/category'),
+                loader:()=>fetch('https://bmb-cars-shop-ikqz8auq1-piyass-projects.vercel.app/category'),
                 element:<AllCompanyLogo/>
             }
         ]
