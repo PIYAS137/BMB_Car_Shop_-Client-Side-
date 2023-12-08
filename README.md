@@ -2,8 +2,18 @@
 # [Server_Side](https://github.com/PIYAS137/BMB_Car_Shop_Server_Side)
 
 
+Features I Use :
+- Firebase Authentication
+- Axios 
+- SweetAlert
+- React Router DOM
+# Front End : React + Tailwind
+# Back End : Express.Js
+# Database : MongoDB
 
-This project is my first full stack project in development life ! So im very exited and i use so many features, library and so many things for this project , lets explore some features and librarys those are used in this project : 
+
+
+This project is my first full stack project in development life ! So im very exited and i use so many features, library and so many things for this project , lets explore some powerful features and librarys those are used in this project : 
 
 - ### Conditional Rendering :
 
